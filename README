@@ -1,4 +1,4 @@
-1. Add the following lines somewhere near the other module definitions (around line 250) in file src/Makefile.am:
+1. Add the following lines somewhere near the other module definitions in file src/Makefile.am:
 
   lib_LTLIBRARIES += mod_mysql_accesslog.la
   mod_mysql_accesslog_la_SOURCES = mod_mysql_accesslog.c
@@ -53,5 +53,5 @@ mysql-accesslog.data = "pipe"
 mysql-accesslog.sock = "/tmp/mysql.sock"
 #mysql-accesslog.host = "192.168.10.100"
 
-# MySQL query to be executed
-mysql-accesslog.query = "INSERT INTO accesslog SET remote_host=%h timestamp=%t, status=%s, header=%{User-Agent}i, query_string=%q, url=%U"
+# MySQL query to be executed (see more here: http://redmine.lighttpd.net/projects/1/wiki/Docs_ModAccessLog)
+mysql-accesslog.query = "INSERT INTO accesslog SET remote_host=%h, timestamp=%t, status=%s, header=%{User-Agent}i, query_string=%q, url=%U"
